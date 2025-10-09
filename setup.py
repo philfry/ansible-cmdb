@@ -35,7 +35,7 @@ setup(
     },
     include_package_data=True,
     zip_safe=False,
-    install_requires=['mako', 'pyyaml', 'ushlex', 'jsonxs'],
+    install_requires=['mako', 'pyyaml', 'jsonxs'],
     scripts=[
         'src/ansible-cmdb',
         'src/ansible-cmdb.py'

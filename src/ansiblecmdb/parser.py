@@ -3,11 +3,7 @@ import re
 import json
 import traceback
 import logging
-if sys.version_info[0] == 2:
-    # Python 2.x shlex doesn't support unicode
-    import ushlex as shlex
-else:
-    import shlex
+import shlex
 from . import ihateyaml
 
 

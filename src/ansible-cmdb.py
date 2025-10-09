@@ -27,15 +27,6 @@ except ImportError:
     from importlib_metadata import version
 
 
-# Verify Python version
-if sys.version_info < (2, 7):
-    sys.stderr.write(
-        "Ansible-cmdb requires Python v2.7+. You are running {}. Support for "
-        "Python v2.6 supported ended October 2013. You should upgrade to a "
-        "newer version.\n".format(sys.version))
-    sys.exit(1)
-
-
 def get_logger():
     """
     Instantiate a logger.
