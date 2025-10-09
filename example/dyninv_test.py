@@ -22,4 +22,4 @@ inventory = {
   }
 }
 
-print json.dumps(inventory, indent=2)
+print(json.dumps(inventory, indent=2))
