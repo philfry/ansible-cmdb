@@ -17,8 +17,6 @@ if sys.argv[-1] == 'publish':
 
 setup(
     name='ansible-cmdb',
-    use_scm_version=True,
-    setup_requires=['setuptools_scm'],
     license='GPLv3',
     description='Generate host overview from ansible fact gathering output',
     long_description=get_long_description(),

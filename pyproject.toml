@@ -2,9 +2,10 @@
 requires = [
     "setuptools>=42",
     "wheel",
-    "setuptools_scm"
 ]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools_scm]
-write_to = "_version.py"
+[project]
+name = "ansible-cmdb"
+version = "1.32"
+dynamic = ['description', 'readme', 'license', 'authors', 'classifiers', 'dependencies']
