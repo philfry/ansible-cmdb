@@ -218,7 +218,49 @@
       #hosts table.net_overview td, #hosts table.net_overview th { text-align: left; padding: 0px 0px 8px 16px; margin: 0px; }
       #hosts table.net_overview { margin: 16px 0px 16px 0px; }
       #hosts .error { color: #FF0000; }
+
+      header #toggle_dark { float: right; line-height: 32px; font-size: small; margin-left: 12px; }
+      header #toggle_dark a { color: #FFFFFF; font-weight: bold; padding: 6px; background-color: #0090F0; box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.15); cursor: pointer; }
+
+      /* dark mode */
+      html.dark body { background-color: #1e1e1e; color: #d4d4d4; }
+      html.dark header { background-color: #00395e; }
+      html.dark header #clear_settings a, html.dark header #toggle_dark a { background-color: #00588f; }
+      html.dark footer { background-color: #2a2a2a; color: #a0a0a0; }
+      html.dark footer a { color: #d0d0d0; }
+      html.dark #col_toggles h2, html.dark #host_overview h2 { color: #a0a0a0; }
+      html.dark #col_toggles a { background-color: #00796b; }
+      html.dark #col_toggles a.col-invisible { background-color: #4a4a4a; color: #b0b0b0; }
+      html.dark #host_overview tr { border-bottom-color: #333333; }
+      html.dark #host_overview tr:hover { background-color: #2b2b2b; }
+      html.dark #host_overview thead th { color: #a0a0a0; border-bottom-color: #555555; }
+      html.dark #host_overview tbody td { color: #d4d4d4; }
+      html.dark #host_overview tbody a, html.dark #hosts a { color: #5fb3f0; }
+      html.dark #host_overview_tbl_filter { color: #a0a0a0; }
+      html.dark #host_overview_tbl_filter input { background-color: #2a2a2a; color: #d4d4d4; border: 1px solid #555555; }
+      html.dark #host_overview_tbl_filter #filter_link a { color: #d4d4d4; }
+      html.dark #host_overview_tbl_info { color: #808080; }
+      html.dark #host_overview .prog_bar_full { border-color: #a0a0a0; }
+      html.dark #host_overview tbody td.error a, html.dark #host_overview .error, html.dark #hosts .error { color: #ff6b6b; }
+      html.dark #host_overview span.usage_detail { color: #a0a0a0; }
+      html.dark #hosts p.desc, html.dark #hosts td { color: #c8c8c8; }
+      html.dark #hosts th { color: #909090; }
+      html.dark #hosts h4, html.dark #hosts h5 { color: #c0c0c0; }
+      html.dark #hosts h3.uncollapsed { border-bottom-color: #444444; }
+      html.dark #hosts h3.collapsed::before, html.dark #hosts h3.uncollapsed::before,
+      html.dark #hosts h4.collapsed::before, html.dark #hosts h4.uncollapsed::before,
+      html.dark #hosts h5.collapsed::before, html.dark #hosts h5.uncollapsed::before { color: #a0a0a0; }
+      html.dark #hosts a.toggle-all { color: #5fb3f0; }
     </style>
+    <script type="text/javascript">
+      try {
+        if (localStorage.getItem("theme") !== "light") { document.documentElement.classList.add("dark"); }
+      } catch (e) { document.documentElement.classList.add("dark"); }
+      function toggleDarkMode() {
+        var dark = document.documentElement.classList.toggle("dark");
+        try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+      }
+    </script>
     <!-- DataTables assets -->
     % if local_js is False:
       <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -235,6 +277,7 @@
     <h1>${title}</h1>
     <span id="top"><a href="#">Back to top</a></span>
     <span id="clear_settings"><a href="javascript:window.localStorage.clear('columnVisibility'); location.reload();" title="If things are acting weird, press this button">Clear settings</a></span> 
+    <span id="toggle_dark"><a onclick="toggleDarkMode()" title="Toggle dark mode">Toggle dark mode</a></span>
     <span id="generated">Generated on <span class="detail">${datetime.datetime.now().strftime('%c')}</span> by <span class="detail">${getpass.getuser()}</span> @ <span class="detail">${socket.getfqdn()}</span></span>
   </header>
 </%def>
